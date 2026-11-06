@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1050" viewBox="0 0 1200 1050" role="img" aria-labelledby="title desc">
+  <title id="title">从单字图像到候选匹配</title>
+  <desc id="desc">输入图像、IDS 结构和印刷模板三路信息，分别形成图像空间特征与类别查询。ZSDecoder 对两者做一层四头交叉注意力匹配，再输出 Top-K。所有字形均为机制示意，不是界面截图或实测结果。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="m2 2 8 4-8 4" fill="none" stroke="#247D6D" stroke-width="1.7"/></marker>
+  </defs>
+  <rect width="1200" height="1050" rx="24" fill="#F7F4ED"/>
+  <g font-family="'Segoe UI','Microsoft YaHei','PingFang SC',sans-serif">
+    <text x="64" y="65" font-size="20" font-weight="600" letter-spacing="2.2" fill="#247D6D">INSIDE THE MODEL</text>
+    <text x="61" y="125" font-size="47" font-weight="750" fill="#152C2A">从单字图像，到候选匹配。</text>
+    <text x="64" y="169" font-size="25" fill="#52645E">图像提供视觉特征，结构与模板提供类别参照。</text>
+    <g id="input-specimens">
+      <rect x="64" y="207" width="336" height="181" rx="15" fill="#E9EDE5"/>
+      <text x="88" y="248" font-size="30" font-weight="650" fill="#152C2A">单字图像</text>
+      <text x="231" y="360" text-anchor="middle" transform="rotate(-6 231 321)" font-family="KaiTi,STKaiti,'Noto Serif CJK SC',serif" font-size="116" fill="#152C2A">明</text>
+      <rect x="432" y="207" width="336" height="181" rx="15" fill="#E9EDE5"/>
+      <text x="456" y="248" font-size="30" font-weight="650" fill="#152C2A">IDS 结构</text>
+      <text x="600" y="318" text-anchor="middle" font-size="47" font-weight="600" fill="#247D6D">明 → 日 + 月</text>
+      <text x="600" y="362" text-anchor="middle" font-size="24" fill="#52645E">部件 · 深度 · 位置</text>
+      <rect x="800" y="207" width="336" height="181" rx="15" fill="#E9EDE5"/>
+      <text x="824" y="248" font-size="30" font-weight="650" fill="#152C2A">印刷模板</text>
+      <text x="967" y="359" text-anchor="middle" font-family="SimSun,'Songti SC','Noto Serif CJK SC',serif" font-size="112" fill="#152C2A">明</text>
+    </g>
+    <g id="feature-encoders">
+      <path d="M232 390V432" fill="none" stroke="#247D6D" stroke-width="2.3" marker-end="url(#arrow)"/>
+      <path d="M600 390V432" fill="none" stroke="#247D6D" stroke-width="2.3" marker-end="url(#arrow)"/>
+      <path d="M968 390V432" fill="none" stroke="#247D6D" stroke-width="2.3" marker-end="url(#arrow)"/>
+      <rect x="64" y="447" width="336" height="112" rx="13" fill="#FFFFFF" stroke="#CBD4C9" stroke-width="1.5"/>
+      <text x="232" y="493" text-anchor="middle" font-size="30" font-weight="600" fill="#152C2A">DenseNet + DSBN</text>
+      <text x="232" y="535" text-anchor="middle" font-size="25" fill="#52645E">输入图像域</text>
+      <rect x="432" y="447" width="336" height="112" rx="13" fill="#FFFFFF" stroke="#CBD4C9" stroke-width="1.5"/>
+      <text x="600" y="493" text-anchor="middle" font-size="32" font-weight="600" fill="#152C2A">ClassEmb</text>
+      <text x="600" y="535" text-anchor="middle" font-size="25" fill="#52645E">结构表示与维度映射</text>
+      <rect x="800" y="447" width="336" height="112" rx="13" fill="#FFFFFF" stroke="#CBD4C9" stroke-width="1.5"/>
+      <text x="968" y="493" text-anchor="middle" font-size="30" font-weight="600" fill="#152C2A">DenseNet + DSBN</text>
+      <text x="968" y="535" text-anchor="middle" font-size="25" fill="#52645E">印刷域 · 共享卷积</text>
+    </g>
+    <g id="query-fusion">
+      <path d="M600 559V608" fill="none" stroke="#247D6D" stroke-width="2.3" marker-end="url(#arrow)"/>
+      <path d="M968 559V608" fill="none" stroke="#247D6D" stroke-width="2.3" marker-end="url(#arrow)"/>
+      <rect x="432" y="623" width="704" height="76" rx="12" fill="#E1EAE1"/>
+      <text x="784" y="671" text-anchor="middle" font-size="28" font-weight="600" fill="#247D6D">结构向量 + 模板特征 → 类别查询</text>
+      <path d="M784 699V748" fill="none" stroke="#247D6D" stroke-width="2.3" marker-end="url(#arrow)"/>
+      <path d="M232 559V748" fill="none" stroke="#247D6D" stroke-width="2.3" marker-end="url(#arrow)"/>
+      <rect x="110" y="623" width="244" height="44" fill="#F7F4ED"/>
+      <text x="232" y="654" text-anchor="middle" font-size="26" fill="#52645E">图像空间特征</text>
+    </g>
+    <g id="matching-decoder">
+      <rect x="64" y="767" width="1072" height="124" rx="16" fill="#152C2A"/>
+      <text x="103" y="821" font-size="39" font-weight="650" fill="#F7F4ED">ZSDecoder</text>
+      <text x="103" y="861" font-size="24" fill="#BCD5C7">让每个类别查询，与图像特征匹配</text>
+      <path d="M649 794V862" stroke="#526F63" stroke-width="1.5"/>
+      <text x="695" y="822" font-size="30" font-weight="600" fill="#F7F4ED">Cross-Attention</text>
+      <text x="695" y="861" font-size="25" fill="#BCD5C7">1 层 · 4 头</text>
+    </g>
+    <g id="output">
+      <path d="M600 891V929" fill="none" stroke="#247D6D" stroke-width="2.3" marker-end="url(#arrow)"/>
+      <text x="600" y="975" text-anchor="middle" font-size="39" font-weight="700" fill="#152C2A">Top-K 候选</text>
+      <text x="600" y="1015" text-anchor="middle" font-size="23" fill="#52645E">字表内评分排序 · 图中为机制示意，非实测结果</text>
+    </g>
+  </g>
+</svg>
