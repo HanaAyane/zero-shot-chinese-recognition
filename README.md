@@ -6,7 +6,9 @@
 
 **[在线体验：零样本手写汉字识别](https://zero-shot-hanzi-hanaayane.awarecomet8.chatgpt.site)**
 
-<sub>访问提示：在线演示需要科学上网环境才能访问。</sub>
+<sub>访问提示：GPT Sites 主站需要科学上网环境才能访问。</sub>
+
+备用入口：[国内镜像（腾讯 CloudBase）](https://zero-shot-handwriting-chinese-recognition-d6bpedd74238.webapps.tcloudbase.com/)
 
 无需安装，支持上传单字图片或手写输入，查看 Top-5 候选。在线版由本仓库随附权重转换为 ONNX，在浏览器内运行；输入图片无需上传服务器。首次使用需下载模型和运行组件，请等待加载完成。
 
